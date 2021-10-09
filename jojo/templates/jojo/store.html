@@ -1,0 +1,35 @@
+
+
+{% extends 'jojo/main.html' %}
+{% load static %}
+{% block content %}
+<section id="portfolio" class="portfolio">
+    <div class="container">
+
+      <ul id="portfolio-flters" class="d-flex justify-content-center">
+        <li data-filter="*" class="filter-active">All</li>
+        <li data-filter=".filter-app">App</li>
+        <li data-filter=".filter-card">Card</li>
+        <li data-filter=".filter-web">Web</li>
+      </ul>
+
+      <div class="row portfolio-container">
+        {% for product in products %}
+        <div class="col-lg-3 col-md-6 portfolio-item filter-app  neomorphic-shadows-hover">
+          <div class="portfolio-img"><img src="{{ product.imageURL }}" class="img-fluid" alt=""></div>
+          <div class="portfolio-info">
+            <h4>{{product.name}}</h4>
+            <!-- <p>App</p> -->
+            <br>
+            <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add To Cart</button>
+            <a class="btn btn-outline-success" href="#">view</a>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+
+    </div>
+  </section>
+  <!-- End Portfolio Section -->
+{% endblock content%}
